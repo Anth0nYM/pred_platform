@@ -1,6 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:pred_platform/video_page.dart';
+import 'package:pred_platform/pages/video_page.dart';
 
 class CameraPage extends StatefulWidget {
   const CameraPage({Key? key}) : super(key: key);
@@ -13,7 +13,6 @@ class _CameraPageState extends State<CameraPage> {
   bool _isLoading = true;
   bool _isRecording = false;
   late CameraController _cameraController;
-  late double _aspectRatio;
 
   @override
   void initState() {
@@ -29,12 +28,17 @@ class _CameraPageState extends State<CameraPage> {
 
   _initCamera() async {
     final cameras = await availableCameras();
-    final back = cameras.firstWhere((camera) => camera.lensDirection == CameraLensDirection.back);
-    _cameraController = CameraController(back, ResolutionPreset.max);
+    final back = cameras.firstWhere(
+        (camera) => camera.lensDirection == CameraLensDirection.back);
+    _cameraController = CameraController(
+      back,
+      ResolutionPreset.max,
+      enableAudio: false,
+    );
+
     await _cameraController.initialize();
     setState(() {
       _isLoading = false;
-      _aspectRatio = _cameraController.value.aspectRatio;
     });
   }
 

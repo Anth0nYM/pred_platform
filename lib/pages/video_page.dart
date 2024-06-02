@@ -39,7 +39,7 @@ class _VideoPageState extends State<VideoPage> {
           IconButton(
             icon: const Icon(Icons.check),
             onPressed: () {
-              print('do something with the file');
+             //print('do something with the file');
             },
           )
         ],
@@ -50,7 +50,7 @@ class _VideoPageState extends State<VideoPage> {
         builder: (context, state) {
           if (state.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
-          } else {
+           } else {
             return VideoPlayer(_videoPlayerController);
           }
         },
