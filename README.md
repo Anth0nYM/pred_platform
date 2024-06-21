@@ -1,16 +1,9 @@
 # pred_platform
 
-A new Flutter project.
+Sheep and goat farming refers to the raising of sheep and goats for the production of meat, wool, leather, milk, and other derivatives. In Brazil, this activity is constantly growing.
 
-## Getting Started
+Sheep and goat farming plays an important role in agribusiness, especially by generating employment opportunities, income, and helping to keep people in rural areas. However, the sector still faces challenges in terms of productivity, management, and coordination among the various links in the meat and leather production chain, which hinders sustainability, competitiveness, and remuneration for producers.
 
-This project is a starting point for a Flutter application.
+It is in this context that computerized systems and machine learning emerge. An automated weight capture and prediction system can be extremely beneficial, enhancing the productivity of livestock breeders.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The present software aims to develop a prediction module, the capture module. This software is designed to capture and send videos of animals to an API, which will perform preprocessing and subsequently predict the weight of the animals.
