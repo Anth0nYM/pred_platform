@@ -19,6 +19,8 @@ class _CameraPageState extends State<CameraPage> {
   late CameraController _cameraController;
   List<String> _videos = [];
 
+  ResolutionPreset _resolutionPreset = ResolutionPreset.max;
+
   @override
   void initState() {
     _initCamera();
@@ -37,7 +39,7 @@ class _CameraPageState extends State<CameraPage> {
     final back = cameras.firstWhere((camera) => camera.lensDirection == CameraLensDirection.back);
     _cameraController = CameraController(
       back,
-      ResolutionPreset.max,
+      _resolutionPreset,
       enableAudio: false,
     );
 
@@ -81,6 +83,46 @@ class _CameraPageState extends State<CameraPage> {
     }
   }
 
+  void _onDelete(int index) {
+    setState(() {
+      _videos.removeAt(index);
+    });
+    _saveVideos();
+  }
+
+  Future<void> _toggleCamera() async {
+    CameraLensDirection newDirection = _cameraController.description.lensDirection == CameraLensDirection.back
+        ? CameraLensDirection.front
+        : CameraLensDirection.back;
+
+    final cameras = await availableCameras();
+    final newCamera = cameras.firstWhere((camera) => camera.lensDirection == newDirection);
+
+    await _cameraController.dispose();
+    _cameraController = CameraController(
+      newCamera,
+      _resolutionPreset,
+      enableAudio: false,
+    );
+
+    await _cameraController.initialize();
+    setState(() {});
+  }
+
+  Future<void> _changeResolution(ResolutionPreset newPreset) async {
+    await _cameraController.dispose();
+    _cameraController = CameraController(
+      _cameraController.description,
+      newPreset,
+      enableAudio: false,
+    );
+
+    await _cameraController.initialize();
+    setState(() {
+      _resolutionPreset = newPreset;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_isLoading) {
@@ -113,13 +155,47 @@ class _CameraPageState extends State<CameraPage> {
               CameraPreview(_cameraController),
               Padding(
                 padding: const EdgeInsets.all(25),
-                child: FloatingActionButton(
-                  backgroundColor: _isRecording ? Colors.red : Colors.grey,
-                  child: Icon(
-                    _isRecording ? Icons.stop : Icons.circle,
-                    color: _isRecording ? Colors.white : Colors.black,
-                  ),
-                  onPressed: () => _recordVideo(),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    FloatingActionButton(
+                      backgroundColor: Colors.grey,
+                      child: Icon(Icons.switch_camera, color: Colors.black),
+                      onPressed: _toggleCamera,
+                    ),
+                    FloatingActionButton(
+                      backgroundColor: Colors.grey,
+                      child: Icon(Icons.settings, color: Colors.black),
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: Text('Select Resolution'),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: ResolutionPreset.values.map((preset) {
+                                return ListTile(
+                                  title: Text(preset.toString().split('.').last),
+                                  onTap: () {
+                                    _changeResolution(preset);
+                                    Navigator.pop(context);
+                                  },
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    FloatingActionButton(
+                      backgroundColor: _isRecording ? Colors.red : Colors.grey,
+                      child: Icon(
+                        _isRecording ? Icons.stop : Icons.circle,
+                        color: _isRecording ? Colors.white : Colors.black,
+                      ),
+                      onPressed: () => _recordVideo(),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -127,12 +203,5 @@ class _CameraPageState extends State<CameraPage> {
         ),
       );
     }
-  }
-
-  void _onDelete(int index) {
-    setState(() {
-      _videos.removeAt(index);
-    });
-    _saveVideos();
   }
 }

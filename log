@@ -1,0 +1,50 @@
+Launching lib\main.dart on SM M325FV in debug mode...
+Warning: This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+Checking the license for package Android SDK Tools in C:\Users\anthonym\AppData\Local\Android\sdk\licenses
+License for package Android SDK Tools accepted.
+Preparing "Install Android SDK Tools (revision: 26.1.1)".
+"Install Android SDK Tools (revision: 26.1.1)" ready.
+Installing Android SDK Tools in C:\Users\anthonym\AppData\Local\Android\sdk\tools
+"Install Android SDK Tools (revision: 26.1.1)" complete.
+"Install Android SDK Tools (revision: 26.1.1)" finished.
+Checking the license for package Android SDK Build-Tools 30.0.3 in C:\Users\anthonym\AppData\Local\Android\sdk\licenses
+License for package Android SDK Build-Tools 30.0.3 accepted.
+Preparing "Install Android SDK Build-Tools 30.0.3 (revision: 30.0.3)".
+"Install Android SDK Build-Tools 30.0.3 (revision: 30.0.3)" ready.
+Installing Android SDK Build-Tools 30.0.3 in C:\Users\anthonym\AppData\Local\Android\sdk\build-tools\30.0.3
+"Install Android SDK Build-Tools 30.0.3 (revision: 30.0.3)" complete.
+"Install Android SDK Build-Tools 30.0.3 (revision: 30.0.3)" finished.
+Checking the license for package Android SDK Platform 31 in C:\Users\anthonym\AppData\Local\Android\sdk\licenses
+License for package Android SDK Platform 31 accepted.
+Preparing "Install Android SDK Platform 31 (revision: 1)".
+"Install Android SDK Platform 31 (revision: 1)" ready.
+Installing Android SDK Platform 31 in C:\Users\anthonym\AppData\Local\Android\sdk\platforms\android-31
+"Install Android SDK Platform 31 (revision: 1)" complete.
+"Install Android SDK Platform 31 (revision: 1)" finished.
+Checking the license for package Android SDK Platform 33 in C:\Users\anthonym\AppData\Local\Android\sdk\licenses
+License for package Android SDK Platform 33 accepted.
+Preparing "Install Android SDK Platform 33 (revision: 3)".
+"Install Android SDK Platform 33 (revision: 3)" ready.
+Installing Android SDK Platform 33 in C:\Users\anthonym\AppData\Local\Android\sdk\platforms\android-33
+"Install Android SDK Platform 33 (revision: 3)" complete.
+"Install Android SDK Platform 33 (revision: 3)" finished.
+C:\Users\anthonym\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android-0.9.8+3\android\src\main\java\io\flutter\plugins\camera\features\resolution\ResolutionFeature.java:170: warning: [deprecation] get(int,int) in CamcorderProfile has been deprecated
+          return CamcorderProfile.get(cameraId, CamcorderProfile.QUALITY_480P);
+                                 ^
+C:\Users\anthonym\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android-0.9.8+3\android\src\main\java\io\flutter\plugins\camera\features\resolution\ResolutionFeature.java:174: warning: [deprecation] get(int,int) in CamcorderProfile has been deprecated
+          return CamcorderProfile.get(cameraId, CamcorderProfile.QUALITY_QVGA);
+                                 ^
+C:\Users\anthonym\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android-0.9.8+3\android\src\main\java\io\flutter\plugins\camera\features\resolution\ResolutionFeature.java:178: warning: [deprecation] get(int,int) in CamcorderProfile has been deprecated
+          return CamcorderProfile.get(cameraId, CamcorderProfile.QUALITY_LOW);
+                                 ^
+7 warnings
+Note: C:\Users\anthonym\AppData\Local\Pub\Cache\hosted\pub.dev\video_thumbnail-0.5.3\android\src\main\java\xyz\justsoft\video_thumbnail\VideoThumbnailPlugin.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: C:\Users\anthonym\AppData\Local\Pub\Cache\hosted\pub.dev\video_thumbnail-0.5.3\android\src\main\java\xyz\justsoft\video_thumbnail\VideoThumbnailPlugin.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Error: ADB exited with exit code 1
+Performing Streamed Install
+
+adb: failed to install D:\projetos\mestrado\pred_platform\build\app\outputs\flutter-apk\app-debug.apk: Failure [INSTALL_FAILED_UPDATE_INCOMPATIBLE: Existing package com.example.pred_platform signatures do not match newer version; ignoring!]
+Error launching application on SM M325FV.
